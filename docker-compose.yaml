@@ -114,6 +114,19 @@ services:
       retries: 50
       start_period: 30s
     restart: always
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: ["CMD", "mongo", "--eval", "db.runCommand({ ping: 1 })"]
+      interval: 10s
+      retries: 3
+      start_period: 5s
+      timeout: 3s
+    restart: always
+
 
   airflow-webserver:
     <<: *airflow-common

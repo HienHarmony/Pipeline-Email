@@ -3,8 +3,7 @@ import pandas as pd
 import logging
 import os
 from pymongo import MongoClient
-
-client = MongoClient('mongodb://mongodb:27017/')  # Thay 'mongodb' bằng tên container MongoDB trong Docker Compose
+client = MongoClient("mongodb://mongo:27017/")
 db = client['email_database']  
 collection = db['emails']      
 
