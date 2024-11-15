@@ -119,13 +119,8 @@ services:
     container_name: mongo
     ports:
       - "27017:27017"
-    healthcheck:
-      test: ["CMD", "mongo", "--eval", "db.runCommand({ ping: 1 })"]
-      interval: 10s
-      retries: 3
-      start_period: 5s
-      timeout: 3s
-    restart: always
+    volumes:
+      - mongo-data:/data/db  
 
 
   airflow-webserver:
@@ -299,3 +294,5 @@ services:
 
 volumes:
   postgres-db-volume:
+
+  mongo-data:  
